@@ -11,12 +11,14 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         int n = Integer.parseInt(br.readLine());
-        int[] arr = Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-        int min = arr[0]; 
-        int max = min;
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int min = 1000000; 
+        int max = -1000000;
+        int x = 0;
         for (int i = 0; i < n ; i++){
-            if (arr[i] < min) min = arr[i];
-            else if (arr[i] > max) max = arr[i];
+            x = Integer.parseInt(st.nextToken());
+            if (x < min) min = x;
+            if (x > max) max = x;
         }
         String result = String.valueOf(min) + " " + String.valueOf(max);
         bw.write(result);
