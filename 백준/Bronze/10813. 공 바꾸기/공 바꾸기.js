@@ -1,17 +1,14 @@
-let fs = require("fs");
-let filePath = process.platform === "linux" ? "/dev/stdin" : "test.txt";
-
-let input = fs.readFileSync(filePath).toString().split("\n");
-let [N, M] = input[0].split(" ").map(Number);
-let arr = Array(N)
-  .fill(1)
-  .map((a, b) => a + b);
-
-for (let i = 1; i <= M; i++) {
-  let [x, y] = input[i].split(" ").map(Number);
-  let tmp = arr[x - 1];
-  arr[x - 1] = arr[y - 1];
-  arr[y - 1] = tmp;
+var fs = require('fs');
+const input = require('fs').readFileSync('/dev/stdin').toString().trim().split('\n');
+var [arrayLength, changeTime] = input[0].split(' ').map(Number);
+var array = [];
+for (var i = 1; i <= arrayLength; i++){
+    array.push(i);
 }
-
-console.log(arr.join(" "));
+for (var j = 1; j <= changeTime; j++){
+    var [x, y] = input[j].split(' ').map(Number);
+    var tmp = array[x - 1];
+    array[x - 1] = array[y - 1];
+    array[y - 1] = tmp;
+}
+console.log(array.join(" "));
